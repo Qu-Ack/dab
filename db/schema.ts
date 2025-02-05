@@ -8,6 +8,10 @@ export const transactionType = pgEnum("transaction_type", [
   "friends",
   "other",
 ]);
+export const days = pgTable("days", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  created_at: timestamp({ withTimezone: true }).defaultNow().notNull(),
+});
 
 export const transactions = pgTable("transactions", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -17,4 +21,5 @@ export const transactions = pgTable("transactions", {
   updated_at: timestamp({ withTimezone: true }),
   description: text().notNull(),
   transaction_type: transactionType().notNull(),
+  dayId: integer("dayId").references(() => days.id),
 });
