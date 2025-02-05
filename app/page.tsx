@@ -26,6 +26,13 @@ export default function Home() {
   const [description, setDescription] = useState("");
   const [transactionType, setTransactionType] = useState("other");
 
+  function stateLint() {
+    setDab(22);
+    setSavingsTarget(300);
+  }
+
+  stateLint();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
