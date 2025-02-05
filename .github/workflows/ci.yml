@@ -1,0 +1,13 @@
+name: CIDAB
+on:
+  push:
+    branches:
+      - main
+jobs:
+  preety_codebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+        run: npm run lint 
+
+  

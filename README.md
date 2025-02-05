@@ -3,7 +3,7 @@
 
 ## Todo 
 
-- [] setup repo
+- [x] setup repo
 - [] setup db and types   
 - [] ci 
 - [] dockerize
