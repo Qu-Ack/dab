@@ -1,4 +1,6 @@
 {
+  "buildCommand": "next build",
+  "cleanUrls": true,
   "crons": [
     {
       "path": "/api/days",
