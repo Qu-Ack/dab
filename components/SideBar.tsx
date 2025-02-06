@@ -7,6 +7,7 @@ import {
   getDayOfWeek,
 } from "@/services/dab/dateHelpers";
 import { days } from "@/db/schema";
+import Link from "next/link";
 
 export default function SideBar(props: { days: (typeof days.$inferSelect)[] }) {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -23,24 +24,23 @@ export default function SideBar(props: { days: (typeof days.$inferSelect)[] }) {
       </div>
       <ul className="space-y-4">
         {props.days.map((day) => (
-          <li
-            key={day.id}
-            className="p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer border border-gray-100 hover:border-purple-200"
-          >
-            <p className="text-sm font-medium text-purple-600 mb-1">
-              Day {day.id}
-            </p>
-            <div className="text-sm text-gray-600 space-y-1">
-              <p className="flex items-center gap-2">
-                <span className="font-medium">
-                  {formatDate(day.created_at)}
-                </span>
-                <span className="text-gray-400">•</span>
-                <span>{formatTime(day.created_at)}</span>
+          <Link key={day.id} href={`/${day.id}`}>
+            <li className="p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer border border-gray-100 hover:border-purple-200">
+              <p className="text-sm font-medium text-purple-600 mb-1">
+                Day {day.id}
               </p>
-              <p className="text-gray-500">{getDayOfWeek(day.created_at)}</p>
-            </div>
-          </li>
+              <div className="text-sm text-gray-600 space-y-1">
+                <p className="flex items-center gap-2">
+                  <span className="font-medium">
+                    {formatDate(day.created_at)}
+                  </span>
+                  <span className="text-gray-400">•</span>
+                  <span>{formatTime(day.created_at)}</span>
+                </p>
+                <p className="text-gray-500">{getDayOfWeek(day.created_at)}</p>
+              </div>
+            </li>
+          </Link>
         ))}
       </ul>
     </>
