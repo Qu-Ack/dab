@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,35 +13,7 @@ import {
 } from "@/components/ui/select";
 
 export default function Home() {
-  const [dab, setDab] = useState(50); // Daily Allocated Budget
-  const [savingsTarget, setSavingsTarget] = useState(500); // Savings Target for the month
-  const currentMonth = new Date().toLocaleString("default", {
-    month: "long",
-    year: "numeric",
-  });
-
-  const [amount, setAmount] = useState("");
-  const [spendingType, setSpendingType] = useState("spent");
-  const [description, setDescription] = useState("");
-  const [transactionType, setTransactionType] = useState("other");
-
-  function stateLint() {
-    setDab(22);
-    setSavingsTarget(300);
-  }
-
-  stateLint();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log({ amount, spendingType, description, transactionType });
-    // Reset form
-    setAmount("");
-    setSpendingType("spent");
-    setDescription("");
-    setTransactionType("other");
-  };
+  function handleSubmit() {}
 
   return (
     <div className="min-h-screen bg-gray-900 text-cyan-300 p-4">
@@ -51,18 +22,16 @@ export default function Home() {
           <div className="flex justify-between items-center text-sm">
             <div className="text-center">
               <p className="text-cyan-500 font-semibold">Daily Budget</p>
-              <p className="text-2xl font-bold text-pink-500">${dab}</p>
+              <p className="text-2xl font-bold text-pink-500">${300}</p>
             </div>
             <div className="text-center">
               <p className="text-cyan-500 font-semibold">Savings Target</p>
-              <p className="text-2xl font-bold text-green-500">
-                ${savingsTarget}
-              </p>
+              <p className="text-2xl font-bold text-green-500">${300}</p>
             </div>
             <div className="text-center">
               <p className="text-cyan-500 font-semibold">Month</p>
               <p className="text-2xl font-bold text-purple-500">
-                {currentMonth}
+                {"January 2025"}
               </p>
             </div>
           </div>
@@ -79,8 +48,6 @@ export default function Home() {
                   id="amount"
                   type="number"
                   placeholder="Enter amount"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
                   required
                   className="bg-gray-700 border-cyan-500 text-cyan-300 placeholder-cyan-600"
                 />
@@ -90,7 +57,7 @@ export default function Home() {
                 <Label htmlFor="spendingType" className="text-cyan-300">
                   Spending Type
                 </Label>
-                <Select value={spendingType} onValueChange={setSpendingType}>
+                <Select>
                   <SelectTrigger className="bg-gray-700 border-cyan-500 text-cyan-300">
                     <SelectValue placeholder="Select spending type" />
                   </SelectTrigger>
@@ -108,8 +75,6 @@ export default function Home() {
                 <Input
                   id="description"
                   placeholder="Enter description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
                   className="bg-gray-700 border-cyan-500 text-cyan-300 placeholder-cyan-600"
                 />
               </div>
@@ -118,10 +83,7 @@ export default function Home() {
                 <Label htmlFor="transactionType" className="text-cyan-300">
                   Transaction Type
                 </Label>
-                <Select
-                  value={transactionType}
-                  onValueChange={setTransactionType}
-                >
+                <Select>
                   <SelectTrigger className="bg-gray-700 border-cyan-500 text-cyan-300">
                     <SelectValue placeholder="Select transaction type" />
                   </SelectTrigger>
