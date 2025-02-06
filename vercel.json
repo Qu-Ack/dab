@@ -4,5 +4,11 @@
       "path": "/api/cron",
       "schedule": "* * * * *"
     }
-  ]
+  ],
+  "functions": {
+    "api/cron": {
+      "memory": 512, 
+      "timeout": 10  
+    }
+  }
 }
