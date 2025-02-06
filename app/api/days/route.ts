@@ -1,6 +1,9 @@
 import db from "@/db";
 import { days } from "@/db/schema";
+import { NextResponse } from "next/server";
 
-export default async function GET() {
+export async function GET() {
   await db.insert(days).values({});
+
+  return NextResponse.json({ status: "ok" });
 }
