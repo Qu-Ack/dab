@@ -18,7 +18,7 @@ export default function SideBar(props: { days: (typeof days.$inferSelect)[] }) {
 
   const renderSidebarContent = () => (
     <>
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap- mb-6">
         <CalendarDays className="w-6 h-6 text-purple-600" />
         <h1 className="text-xl font-semibold text-gray-800">Days</h1>
       </div>
@@ -59,7 +59,7 @@ export default function SideBar(props: { days: (typeof days.$inferSelect)[] }) {
         )}
       </button>
 
-      <div className="hidden md:block w-[20%] bg-white border-r border-gray-200 p-6 shadow-lg h-full">
+      <div className="hidden md:block w-[20%] bg-white border-r border-b border-gray-200 p-6 shadow-lg h-full max-h-[100vh] overflow-scroll">
         {renderSidebarContent()}
       </div>
 

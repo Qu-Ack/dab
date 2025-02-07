@@ -32,7 +32,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="h-screen w-screen flex">
+        <div className="h-full w-full overflow-scroll flex">
           <SideBar days={days}></SideBar>
           {children}
         </div>
